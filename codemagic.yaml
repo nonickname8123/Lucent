@@ -11,20 +11,25 @@ workflows:
         script: |
           npm install
 
-      - name: Build web
+      - name: Build Next.js
         script: |
           npm run build
 
-      - name: Sync Capacitor
+      - name: Sync Capacitor iOS
         script: |
           npx cap sync ios
 
-      - name: Build IPA
+      - name: Build iOS App
         script: |
-          xcode-project build-ipa \
-            --project ios/App/App.xcodeproj \
-            --scheme App \
-            --archive-xcargs "CODE_SIGNING_ALLOWED=NO"
+          cd ios/App
+
+          xcodebuild \
+            -project App.xcodeproj \
+            -scheme App \
+            -sdk iphoneos \
+            -configuration Release \
+            CODE_SIGNING_ALLOWED=NO \
+            build
 
     artifacts:
-      - build/ios/ipa/*.ipa
+      - ios/App/build/**/*.app
