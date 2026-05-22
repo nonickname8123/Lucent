@@ -24,7 +24,7 @@ workflows:
           xcode-project build-ipa \
             --project ios/App/App.xcodeproj \
             --scheme App \
-            --archive-flags="-destination generic/platform=iOS"
+            --archive-xcargs "CODE_SIGNING_ALLOWED=NO"
 
     artifacts:
       - build/ios/ipa/*.ipa
