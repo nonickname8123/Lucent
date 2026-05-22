@@ -22,7 +22,7 @@ workflows:
       - name: Build IPA
         script: |
           xcode-project build-ipa \
-            --project ios/App.xcodeproj \
+            --project ios/App/App.xcodeproj \
             --scheme App
 
     artifacts:
