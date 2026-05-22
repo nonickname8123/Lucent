@@ -22,7 +22,7 @@ workflows:
       - name: Install CocoaPods
         script: |
           cd ios/App
-          pod install
+          pod install --repo-update
 
       - name: Build IPA
         script: |
