@@ -28,8 +28,10 @@ workflows:
             -scheme App \
             -sdk iphoneos \
             -configuration Release \
+            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             build
 
     artifacts:
       - ios/App/build/**/*.app
+      - ios/App/build/**/*
